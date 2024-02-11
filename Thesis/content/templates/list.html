@@ -1,0 +1,43 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thesis List</title>
+    <link rel="stylesheet" href="{% static 'css/style_list.css' %}">
+</head>
+<body>
+    <div class="head_style">
+        <h1>Thesis List</h1>
+        <a href="{% url 'thesis_search' %}" class="link">Search Theses</a>  
+    </div>
+    <table border="1">
+        <tr>
+            <th>Title</th>
+            <th>Authors</th>
+            <th>Abstract</th>
+            <th>Panelist</th>
+            <th>Advisors</th>
+            <th>Defense Date</th>
+            <th>Published Date</th>
+            <th>Keywords</th>
+            <th>Status</th>
+        </tr>
+        {% for thesis in theses %}
+        <tr>
+            <td>{{ thesis.title }}</td>
+            <td>{{ thesis.authors }}</td>
+            <td>{{ thesis.abstract }}</td>
+            <td>{{ thesis.panelist }}</td>
+            <td>{{ thesis.advisors }}</td>
+            <td>{{ thesis.defense_date }}</td>
+            <td>{{ thesis.published_date }}</td>
+            <td>{{ thesis.keywords }}</td>
+            <td>{{ thesis.get_status_display }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

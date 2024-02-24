@@ -11,5 +11,6 @@ def thesis_search(request):
         theses = Thesis.objects.filter(keywords__icontains=query)
     else:
         theses = Thesis.objects.all()
-    return render(request, 'search/thesis_search.html', {'theses': theses})
+    return render(request, 'list.html', {'theses': theses})
+
 

@@ -18,43 +18,34 @@
             </form>
         </div>
     </div>
-    <table border="1">
-        <tr>
-            <th>Title</th>
-            <th>Authors</th>
-            <th>Abstract</th>
-            <th>Panelist</th>
-            <th>Advisors</th>
-            <th>Defense Date</th>
-            <th>Published Date</th>
-            <th>Keywords</th>
-            <th>Status</th>
-        </tr>
+    
+    <div class="thesis-list">
         {% if theses %}
             {% for thesis in theses %}
-                <tr>
-                    <td>{{ thesis.title }}</td>
-                    <td>{{ thesis.authors }}</td>
-                    <td>{{ thesis.abstract }}</td>
-                    <td>{{ thesis.panelist }}</td>
-                    <td>{{ thesis.advisors }}</td>
-                    <td>{{ thesis.defense_date }}</td>
-                    <td>{{ thesis.published_date }}</td>
-                    <td>{{ thesis.keywords }}</td>
-                    <td>{{ thesis.get_status_display }}</td>
-                </tr>
+                <div class="thesis-item">
+                    <h2><a href="{% url 'thesis_detail' thesis.id %}">{{ thesis.title }}</a></h2>
+                    <p>Published: {{ thesis.published_date }}</p>
+                    <p>keywords: {{thesis.keywords}}</p>
+                </div>
             {% endfor %}
         {% else %}
-            <tr>
-                <td colspan="9">No results found.</td>
-            </tr>
+            <p>No results found.</p>
         {% endif %}
-    </table>
+    </div>
 
     <script>
         function validateSearch() {
             // You can add additional validation logic here if needed
             return true; // Return true to submit the form
+        }
+
+        function showDetails(id) {
+            var detailsDiv = document.getElementById('details_' + id);
+            if (detailsDiv.style.display === 'none') {
+                detailsDiv.style.display = 'block';
+            } else {
+                detailsDiv.style.display = 'none';
+            }
         }
     </script>
 </body>

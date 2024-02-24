@@ -1,53 +1,32 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f2f2f2;
-}
-
 .head_style {
-    background-color: #333;
-    color: white;
-    padding: 20px;
     text-align: center;
-}
-
-h1 {
-    margin: 0;
+    margin-bottom: 20px;
 }
 
 .search-container {
     margin-top: 20px;
-    text-align: center;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
+.thesis-list {
     margin-top: 20px;
 }
 
-th, td {
+.thesis-item {
+    background-color: #f9f9f9;
     padding: 10px;
-    border: 1px solid #ddd;
+    margin-bottom: 10px;
 }
 
-th {
-    background-color: #333;
-    color: white;
+.thesis-item h2 {
+    margin-bottom: 5px;
 }
 
-tr:nth-child(even) {
-    background-color: #f2f2f2;
+.thesis-details {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin-top: 5px;
 }
 
-tr:hover {
-    background-color: #ddd;
-}
-
-.no-results {
-    text-align: center;
-    padding: 20px;
-    color: #555;
-    font-style: italic;
+.thesis-details p {
+    margin-bottom: 5px;
 }

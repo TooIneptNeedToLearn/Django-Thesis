@@ -1,0 +1,15 @@
+{% extends "list.html" %}
+
+{% block title %}{{ thesis.title }} - Thesis Detail{% endblock %}
+
+{% block content %}
+<h1>{{ thesis.title }}</h1>
+<p><strong>Authors:</strong> {{ thesis.authors }}</p>
+<p><strong>Abstract:</strong> {{ thesis.abstract }}</p>
+<p><strong>Panelist:</strong> {{ thesis.panelist }}</p>
+<p><strong>Advisors:</strong> {{ thesis.advisors }}</p>
+<p><strong>Defense Date:</strong> {{ thesis.defense_date }}</p>
+<p><strong>Published Date:</strong> {{ thesis.published_date }}</p>
+<p><strong>Keywords:</strong> {{ thesis.keywords }}</p>
+<p><strong>Status:</strong> {{ thesis.get_status_display }}</p>
+{% endblock %}

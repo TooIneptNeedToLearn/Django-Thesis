@@ -1,15 +1,30 @@
-{% extends "list.html" %}
+{% extends 'base.html' %}
 
 {% block title %}{{ thesis.title }} - Thesis Detail{% endblock %}
 
 {% block content %}
-<h1>{{ thesis.title }}</h1>
-<p><strong>Authors:</strong> {{ thesis.authors }}</p>
-<p><strong>Abstract:</strong> {{ thesis.abstract }}</p>
-<p><strong>Panelist:</strong> {{ thesis.panelist }}</p>
-<p><strong>Advisors:</strong> {{ thesis.advisors }}</p>
-<p><strong>Defense Date:</strong> {{ thesis.defense_date }}</p>
-<p><strong>Published Date:</strong> {{ thesis.published_date }}</p>
-<p><strong>Keywords:</strong> {{ thesis.keywords }}</p>
-<p><strong>Status:</strong> {{ thesis.get_status_display }}</p>
+<div class="thesis-detail">
+    <h1 class="thesis-title">{{ thesis.title }}</h1>
+    <div class="thesis-info">
+        <p class="author"><strong>Authors:</strong> {{ thesis.authors }}</p>
+        <p class="abstract"><strong>Abstract:</strong> {{ thesis.abstract }}</p>
+        <p class="panelist"><strong>Panelist:</strong> {{ thesis.panelist }}</p>
+        <p class="advisor"><strong>Advisors:</strong> {{ thesis.advisors }}</p>
+        <p class="defense-date"><strong>Defense Date:</strong> {{ thesis.defense_date }}</p>
+        <p class="published-date"><strong>Published Date:</strong> {{ thesis.published_date }}</p>
+        <p class="keywords"><strong>Keywords:</strong> {{ thesis.keywords }}</p>
+        <p class="status"><strong>Status:</strong> {{ thesis.get_status_display }}</p>
+    </div>
+</div>
+
+<div class="comment-section">
+    <h2 class="comment-heading">Comments</h2>
+    <div class="comments">
+
+    </div>
+</div>
+
+<div class="return">
+    <a href="/">Return to Thesis List</a>
+</div>
 {% endblock %}

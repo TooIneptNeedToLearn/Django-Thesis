@@ -18,35 +18,37 @@
             </form>
         </div>
     </div>
+
+    <!-- Display Existing Data -->
+    {% if not request.GET.q and existing_data %}
+    <div class="existing-data">
+        <h2>Thesis List</h2>
+        {% for thesis in existing_data %}
+            <div class="thesis-item">
+                <h2>{{ thesis.title }}</h2>
+                <p>Published: {{ thesis.published_date }}</p>
+                <p>Keywords: {{ thesis.keywords }}</p>
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
     
-    <div class="thesis-list">
+    <!-- Search  -->
+    {% if search_query %}
+    <div class="search-results">
+        <h2>Search Results for "{{ search_query }}"</h2>
         {% if theses %}
             {% for thesis in theses %}
                 <div class="thesis-item">
-                    <h2><a href="{% url 'thesis_detail' thesis.id %}">{{ thesis.title }}</a></h2>
+                    <h2>{{ thesis.title }}</h2>
                     <p>Published: {{ thesis.published_date }}</p>
-                    <p>keywords: {{thesis.keywords}}</p>
+                    <p>Keywords: {{ thesis.keywords }}</p>
                 </div>
             {% endfor %}
         {% else %}
             <p>No results found.</p>
         {% endif %}
     </div>
-
-    <script>
-        function validateSearch() {
-            // You can add additional validation logic here if needed
-            return true; // Return true to submit the form
-        }
-
-        function showDetails(id) {
-            var detailsDiv = document.getElementById('details_' + id);
-            if (detailsDiv.style.display === 'none') {
-                detailsDiv.style.display = 'block';
-            } else {
-                detailsDiv.style.display = 'none';
-            }
-        }
-    </script>
+    {% endif %}
 </body>
 </html>

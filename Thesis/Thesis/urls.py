@@ -21,5 +21,5 @@ from content.views import thesis_search
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('content.urls')),
-    path('search/', thesis_search, name='thesis_search')
 ]
+

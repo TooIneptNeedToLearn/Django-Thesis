@@ -21,7 +21,22 @@
 <div class="comment-section">
     <h2 class="comment-heading">Comments</h2>
     <div class="comments">
+        {% with comments.count as total_comments%}
+            <h2> {{total_comments}} Comment{{total_comments|pluralize}}</h2>
+        {%endwith%}
+        {%for comment in comments%}
+            <div class="comment_sec">
+                <p class="info">
+                    Comment {{forloop.counter}} by {{comment.name}}
+                    {{comment.created}}
+                </p>
+                {{comment.body|linebreaks}}
+            </div>
+            {%empty%}
+                <p>There are no comments.</p>
+        {%endfor%}
 
+        {%include "inner_working/comment_form.html"%}
     </div>
 </div>
 

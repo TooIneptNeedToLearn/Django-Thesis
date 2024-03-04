@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Thesis
+from .models import Thesis, Comment
 from django.core.paginator import Paginator
+from .forms import CommentForm
+from django.views.decorators.http import require_POST
 
 
 
@@ -27,5 +29,19 @@ def thesis_search(request):
 
 def thesis_details(request, year, month, day, thesis):
     thesis = get_object_or_404(Thesis,slug=thesis,published_date__year = year, published_date__month = month, published_date__day = day)
-    return render(request,"inner_working/thesis_details.html", {"thesis":thesis})
+    comments = thesis.comments.filter(active=True)
+    form = CommentForm()
+    return render(request,"inner_working/thesis_details.html", {"thesis":thesis,'comments':comments, 'form':form})
 
+
+@require_POST
+def post_comment(request, thesis_id):
+    post = get_object_or_404(Thesis,id=thesis_id)
+    comment = None
+    form = CommentForm(data=request.POST)
+    if form.is_valid():
+        comment = form.save(commit=False)
+        comment.post = post
+        comment.save()
+    
+    return render(request, 'inner_working/comment.html', {'post':post, 'form':form, 'comment':comment })

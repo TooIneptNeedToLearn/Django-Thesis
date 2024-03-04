@@ -6,5 +6,6 @@ app_name = "content"
 urlpatterns = [
     path('', views.show_thesis, name='thesis_list'),
     path('search/', views.thesis_search, name='thesis_search'),
-    path('<int:year>/<int:month>/<int:day>/<slug:thesis>/',views.thesis_details,name = "thesis_details")
+    path('<int:year>/<int:month>/<int:day>/<slug:thesis>/',views.thesis_details,name = "thesis_details"),
+    path("<int:thesis_id>/comment/", views.post_comment, name = 'post_comment'),
 ]

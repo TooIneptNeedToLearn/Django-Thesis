@@ -26,6 +26,7 @@
         {% for thesis in existing_data %}
             <div class="thesis-item">
                 <h2><a href="{%url 'thesis_details' thesis.id%}">{{ thesis.title }}</a></h2>
+                <p>Abstract: {{thesis.abstract }}</p>
                 <p>Published: {{ thesis.published_date }}</p>
                 <p>Keywords: {{ thesis.keywords }}</p>
             </div>
@@ -40,7 +41,7 @@
         {% if theses %}
             {% for thesis in theses %}
                 <div class="thesis-item">
-                    <h2>{{ thesis.title }}</h2>
+                    <h2><a href="{%url 'thesis_details' thesis.id%}">{{ thesis.title }}</a></h2>
                     <p>Published: {{ thesis.published_date }}</p>
                     <p>Keywords: {{ thesis.keywords }}</p>
                 </div>

@@ -31,6 +31,7 @@
                 <p>Keywords: {{ thesis.keywords }}</p>
             </div>
         {% endfor %}
+        {% include "paginator.html" with page=theses%}
     </div>
     {% endif %}
 

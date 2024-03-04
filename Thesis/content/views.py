@@ -8,7 +8,10 @@ def index_page(request):
     return render(request, 'landing_page.html')
 
 def show_thesis(request):
-    theses = Thesis.objects.all()
+    theses_list = Thesis.objects.all()
+    paginator = Paginator(theses_list, 3)
+    page_number = request.GET.get('page', 1)
+    theses = paginator.page(page_number)
     return render(request, 'inner_working/list.html', {'existing_data': theses})
 
 

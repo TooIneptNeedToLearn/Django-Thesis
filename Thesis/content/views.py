@@ -22,8 +22,7 @@ def thesis_search(request):
 
     return render(request, 'inner_working/list.html', {'theses': theses, 'search_query': query})
 
-def thesis_details(request, id):
-    thesis = get_object_or_404(Thesis, pk=id)
-
+def thesis_details(request, year, month, day, thesis):
+    thesis = get_object_or_404(Thesis,slug=thesis,published_date__year = year, published_date__month = month, published_date__day = day)
     return render(request,"inner_working/thesis_details.html", {"thesis":thesis})
 

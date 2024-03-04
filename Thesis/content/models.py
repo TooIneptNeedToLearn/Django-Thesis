@@ -1,10 +1,12 @@
 from django.db import models
 from django.utils.text import slugify
 from django.utils import timezone
+from django.urls import reverse
 
 class Thesis(models.Model):
     title = models.CharField(max_length=255)
-    slug = models.SlugField(max_length=255, unique=True, blank=True)  
+    slug = models.SlugField(max_length=255, unique=True, blank=True
+                            ,unique_for_date = "published_date")  
     authors = models.CharField(max_length=100)
     abstract = models.TextField()
     body = models.TextField()
@@ -32,6 +34,10 @@ class Thesis(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def get_absolute_url(self):
+        return reverse('content:thesis_details', args=[self.published_date.year, self.published_date.month,self.published_date.day,self.slug])
+        
 
     def save(self, *args, **kwargs):
         if not self.slug:

@@ -21,6 +21,6 @@ from content.views import index_page
 urlpatterns = [
     path('', index_page),
     path('admin/', admin.site.urls),
-    path('thesis/', include('content.urls')),
+    path('thesis/', include('content.urls', namespace = 'content')),
 ]
 

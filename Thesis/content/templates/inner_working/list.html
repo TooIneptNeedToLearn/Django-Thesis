@@ -12,7 +12,7 @@
     <div class="head_style">
         <h1>Thesis List</h1>
         <div class="search-container">
-            <form action="{% url 'thesis_search' %}" method="get" onsubmit="return validateSearch()">
+            <form action="{% url 'content:thesis_search' %}" method="get" onsubmit="return validateSearch()">
                 <input type="text" name="q" placeholder="Search Keywords" value="{{ request.GET.q }}">
                 <button type="submit">Search</button>
             </form>
@@ -25,7 +25,7 @@
         <h2>Thesis List</h2>
         {% for thesis in existing_data %}
             <div class="thesis-item">
-                <h2><a href="{%url 'thesis_details' thesis.id%}">{{ thesis.title }}</a></h2>
+                <h2><a href="{{thesis.get_absolute_url}}">{{ thesis.title }}</a></h2>
                 <p>Abstract: {{thesis.abstract }}</p>
                 <p>Published: {{ thesis.published_date }}</p>
                 <p>Keywords: {{ thesis.keywords }}</p>
@@ -41,7 +41,7 @@
         {% if theses %}
             {% for thesis in theses %}
                 <div class="thesis-item">
-                    <h2><a href="{%url 'thesis_details' thesis.id%}">{{ thesis.title }}</a></h2>
+                    <h2><a href="{{thesis.get_absolute_url}}">{{ thesis.title }}</a></h2>
                     <p>Published: {{ thesis.published_date }}</p>
                     <p>Keywords: {{ thesis.keywords }}</p>
                 </div>
